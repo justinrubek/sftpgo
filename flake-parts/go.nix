@@ -23,6 +23,22 @@
           mainProgram = "sftpgo";
         };
       };
+
+      static-files = (pkgs.stdenv.mkDerivation {
+        name = "sftpgo-static";
+        buildCommand = ''
+          mkdir $out
+          cp ${../static}/* -r $out
+        '';
+      });
+
+      template-files = (pkgs.stdenv.mkDerivation {
+        name = "sftpgo-templates";
+        buildCommand = ''
+          mkdir $out
+          cp ${../templates}/* -r $out
+        '';
+      });
     };
   };
 }
